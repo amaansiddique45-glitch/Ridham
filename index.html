@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secure Login</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(to right,#2c5364,#203a43,#0f2027);
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+/* Center container */
+.container{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+flex-direction:column;
+padding:20px;
+}
+
+/* Box */
+.box{
+background:rgba(255,255,255,0.1);
+padding:25px;
+border-radius:12px;
+width:90%;
+max-width:320px;
+}
+
+/* Inputs */
+input{
+width:90%;
+padding:10px;
+margin:10px 0;
+border:none;
+border-radius:6px;
+}
+
+/* Button */
+button{
+padding:10px 20px;
+border:none;
+border-radius:20px;
+background:#ff4b2b;
+color:white;
+cursor:pointer;
+}
+
+/* Hidden sections */
+#hack,#emotional,#final{
+display:none;
+}
+
+/* Typing effect */
+.typing{
+border-right:2px solid white;
+white-space:pre-wrap;
+overflow:hidden;
+display:inline-block;
+}
+
+/* Explosion */
+.explosion{
+position:fixed;
+width:10px;
+height:10px;
+background:yellow;
+border-radius:50%;
+animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+0%{transform:scale(1);opacity:1;}
+100%{transform:scale(60);opacity:0;}
+}
+
+/* Final */
+#final h1{
+font-size:32px;
+color:#ffd700;
+animation:pop 1s infinite alternate;
+}
+
+@keyframes pop{
+from{transform:scale(1);}
+to{transform:scale(1.1);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- LOGIN -->
+<div id="login" class="box">
+<h2>🔐 Secure Login</h2>
+<input type="text" placeholder="Username"><br>
+<input type="password" placeholder="Password"><br>
+<button onclick="login()">Login</button>
+</div>
+
+<!-- HACK -->
+<div id="hack">
+<h2>⚠️ Device Hacked!</h2>
+<p>Suspicious activity detected...<br>Your data is at risk.</p>
+<button onclick="secure()">Secure Now</button>
+</div>
+
+<!-- EMOTIONAL -->
+<div id="emotional">
+<h2>Wait... RIDHAM 💙</h2>
+<p id="typeText" class="typing"></p>
+<br>
+<button onclick="wish()">Continue</button>
+</div>
+
+<!-- FINAL -->
+<div id="final">
+<h1>🎉 HAPPY BIRTHDAY RIDHAM 🎂</h1>
+<p>You really thought you got hacked? 😂<br>Got you bro 😈🔥</p>
+</div>
+
+</div>
+
+<script>
+
+function login(){
+document.getElementById("login").style.display="none";
+document.getElementById("hack").style.display="block";
+document.body.style.background="black";
+}
+
+function secure(){
+document.getElementById("hack").style.display="none";
+document.getElementById("emotional").style.display="block";
+document.body.style.background="linear-gradient(135deg,#1d2b64,#f8cdda)";
+typeEffect();
+}
+
+/* Typing Effect */
+const text = `Before you panic… just listen.
+
+Life gets busy, things change, but one thing never did — our friendship.
+You’ve been there in moments no one else was.
+
+Not everyone gets a friend like you…
+And I’m really grateful I do.
+
+You matter more than you know 🤍`;
+
+let i = 0;
+
+function typeEffect(){
+if(i < text.length){
+document.getElementById("typeText").innerHTML += text.charAt(i);
+i++;
+setTimeout(typeEffect, 30);
+}
+}
+
+/* Final Wish + Explosion */
+function wish(){
+document.getElementById("emotional").style.display="none";
+document.getElementById("final").style.display="block";
+
+/* Explosion */
+for(let i=0;i<25;i++){
+let div=document.createElement("div");
+div.className="explosion";
+div.style.top=Math.random()*100+"vh";
+div.style.left=Math.random()*100+"vw";
+document.body.appendChild(div);
+}
+}
+
+</script>
+
+</body>
+</html>
